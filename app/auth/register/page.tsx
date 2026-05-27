@@ -2,23 +2,29 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { register } from '@/lib/api';
+import axios from 'axios';
 
 export default function RegisterPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [regCode, setRegCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const VALID_REG_CODE = process.env.NEXT_PUBLIC_REG_CODE;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    // Basic validation
-    if (!email || !password || !confirmPassword) {
+    if (!email || !username || !phoneNumber || !password || !confirmPassword || !regCode) {
       setError('Please fill in all fields');
       setLoading(false);
       return;
@@ -42,13 +48,29 @@ export default function RegisterPage() {
       return;
     }
 
+    // ← Cek regCode di frontend, tidak dikirim ke API
+    if (regCode !== VALID_REG_CODE) {
+      setError('Invalid registration code');
+      setLoading(false);
+      return;
+    }
+
     try {
-      // TODO: Implement registration API call
-      console.log('Registration attempt:', { email, password });
-      // Example: const response = await fetch('/api/auth/register', { ... })
-      alert('Registration functionality not yet implemented');
+      await register({
+        username,
+        email,
+        password,
+        phone_number: phoneNumber,
+      });
+
+      router.push('/auth/login?registered=true');
+
     } catch (err) {
-      setError('An error occurred. Please try again.');
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.detail ?? 'Registrasi gagal.');
+      } else {
+        setError('Terjadi kesalahan. Silakan coba lagi.');
+      }
     } finally {
       setLoading(false);
     }
@@ -100,6 +122,21 @@ export default function RegisterPage() {
           </div>
 
           <div>
+            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number
+            </label>
+            <input
+              id="phoneNumber"
+              type="tel"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="+6281234567890"
+              className="w-full px-4 py-2 border text-blue-500 border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
+              disabled={loading}
+            />
+          </div>
+
+          <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
               Password
             </label>
@@ -108,7 +145,7 @@ export default function RegisterPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your a strong password"
+              placeholder="Enter a strong password"
               className="w-full px-4 py-2 border text-blue-500 border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
               disabled={loading}
             />
@@ -170,9 +207,9 @@ export default function RegisterPage() {
               Terms of Service
             </Link>
           </p>
-          <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} MyKMPass</p>
-            <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} Katedral Medan. All rights reserved.</p>
-            <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} Permata Teknologi Group. All rights reserved.</p>
+          <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} KMPortal</p>
+          <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} Katedral Medan. All rights reserved.</p>
+          <p className="text-center text-xs text-gray-500">&copy; {new Date().getFullYear()} Permata Teknologi Group. All rights reserved.</p>
         </div>
       </div>
     </div>

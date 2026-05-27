@@ -1,6 +1,6 @@
 from ninja import NinjaAPI, Schema
 from ninja.errors import HttpError
-from oauth.models import User, OAuthClient, OAuthToken, OAuthAuthorizationCode
+from auth.models import User, OAuthClient, OAuthToken, OAuthAuthorizationCode
 from django.contrib.auth.hashers import make_password, check_password
 from django.utils import timezone
 from datetime import timedelta
