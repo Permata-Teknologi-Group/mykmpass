@@ -30,29 +30,24 @@ const setCookie = (name: string, value: string, days: number = 365) => {
 
 const quotes = [
   {
-    id: { text: '"Semua yang ada di dunia ini adalah karunia dari Tuhan, diciptakan untuk kita menjadi sarana untuk mengenal-Nya lebih baik, lebih mencintai Dia dan melayani Dia dengan lebih setia!"', author: 'St. Ignatius dari Loyola' },
-    en: { text: '"All the things of this world are gifts and graces of God, created to be the means by which we can know Him better, love Him more surely, and serve Him more faithfully!"', author: 'St. Ignatius of Loyola' },
-    zh: { text: '"世界上的一切都是上帝的礼物和恩宠，被创造成我们用来更好地了解他、更真诚地爱他、更忠实地服侍他的手段！"', author: 'St. Ignatius of Loyola' },
+    text: '"All the things of this world are gifts and graces of God, created to be the means by which we can know Him better, love Him more surely, and serve Him more faithfully!"',
+    author: 'St. Ignatius of Loyola',
   },
   {
-    id: { text: '"Buah keheningan adalah doa. Buah doa adalah iman. Buah iman adalah kasih, dan buah dari kasih adalah pelayanan, dan buah dari pelayanan adalah kedamaian. Allah tidak memanggilku untuk menjadi sukses, melainkan Ia memanggilku untuk menjadi taat."', author: 'Ibu Teresa dari Kalkuta' },
-    en: { text: '"The fruit of silence is prayer. The fruit of prayer is faith. The fruit of faith is love. The fruit of love is service. God does not call me to be successful; He calls me to be obedient."', author: 'Mother Teresa of Calcutta' },
-    zh: { text: '"沉默的果实是祷告。祷告的果实是信仰。信仰的果实是爱。爱的果实是服侍。上帝不要求我成功，而是要求我顺从。"', author: '加尔各答的特蕾莎修女' },
+    text: '"The fruit of silence is prayer. The fruit of prayer is faith. The fruit of faith is love. The fruit of love is service. God does not call me to be successful; He calls me to be obedient."',
+    author: 'Mother Teresa of Calcutta',
   },
   {
-    id: { text: '"Mengabdikan diri seikhlas-ikhlasnya hingga titik darah yang terakhir, karena Tuhan hadir secara paling nyata di dalam diri orang-orang sakit yang kita layani. Kita ditugaskan Tuhan untuk melayani Dia di dalam diri orang-orang sakit ini."', author: 'St. Kamilius de Lellis' },
-    en: { text: '"To devote oneself wholeheartedly until the last drop of blood, because the Lord is present most truly in the sick we serve. We are assigned by the Lord to serve Him in the sick."', author: 'St. Camillus de Lellis' },
-    zh: { text: '"全身心地奉献自己，直到最后一滴血，因为主最真实地临在于我们所服侍的病人身上。我们被主分派在病人身上事奉祂。"', author: '圣卡米洛斯·德·莱利斯' },
+    text: '"To devote oneself wholeheartedly until the last drop of blood, because the Lord is present most truly in the sick we serve. We are assigned by the Lord to serve Him in the sick."',
+    author: 'St. Camillus de Lellis',
   },
   {
-    id: { text: '"Tidak menyakiti saudara-saudara kita yang rendah hati adalah tugas utama kita bagi mereka; tetapi berhenti di sana tidaklah cukup. Kita memiliki misi yang lebih tinggi untuk melayani mereka, kapan pun mereka membutuhkannya."', author: 'Santo Fransiskus dari Asisi' },
-    en: { text: '"Not to hurt our humblest brothers and sisters is our primary duty to them; but to stop at that is not enough. We have the higher duty to serve them, whenever they need us."', author: 'St. Francis of Assisi' },
-    zh: { text: '"不伤害我们最谦卑的兄弟姐妹是我们对他们的主要责任；但仅限于此是不够的。我们有更高的责任去服侍他们，无论何时他们需要我们。"', author: '亚西西的圣弗朗西斯' },
+    text: '"Not to hurt our humblest brothers and sisters is our primary duty to them; but to stop at that is not enough. We have the higher duty to serve them, whenever they need us."',
+    author: 'St. Francis of Assisi',
   },
   {
-    id: { text: '"Berdoalah seolah-olah semuanya bergantung pada Allah. Bekerjalah seolah-olah segalanya bergantung kepadamu."', author: 'Santo Agustinus' },
-    en: { text: '"Pray as if everything depends on God. Work as if everything depends on you."', author: 'St. Augustine' },
-    zh: { text: '"祈祷时，就像一切都取决于上帝。工作时，就像一切都取决于你。"', author: '圣奥古斯丁' },
+    text: '"Pray as if everything depends on God. Work as if everything depends on you."',
+    author: 'St. Augustine',
   },
 ];
 
@@ -66,11 +61,13 @@ const translations = {
     passwordPlaceholder: 'Masukkan password',
     forgotPassword: 'Lupa password?',
     signInButton: 'Masuk',
+    githubLoginDev: 'Lanjutkan dengan GitHub',
     processing: 'Memproses...',
     noAccount: 'Belum punya akun?',
     register: 'Daftar di sini',
     copyright: 'Katedral Medan',
     poweredBy: 'Dikembangkan oleh Permata Teknologi Group',
+    forDev: '*Hanya untuk pengembang',
   },
   en: {
     welcomeBack: 'Welcome Back',
@@ -81,11 +78,13 @@ const translations = {
     passwordPlaceholder: 'Enter your password',
     forgotPassword: 'Forgot your password?',
     signInButton: 'Sign In',
+    githubLoginDev: 'Login with GitHub',
     processing: 'Processing...',
     noAccount: "Don't have an account?",
     register: 'Register here',
     copyright: 'Katedral Medan',
     poweredBy: 'Powered by Permata Teknologi Group',
+    forDev: '*Only for developers',
   },
   zh: {
     welcomeBack: '欢迎回来',
@@ -96,11 +95,13 @@ const translations = {
     passwordPlaceholder: '输入您的密码',
     forgotPassword: '忘记密码?',
     signInButton: '登录',
+    githubLoginDev: '使用 GitHub 登录',
     processing: '处理中...',
     noAccount: '还没有账户?',
     register: '在此注册',
     copyright: 'Katedral Medan',
     poweredBy: '由 Permata Teknologi Group 开发',
+    forDev: '*仅限开发者',
   },
 };
 
@@ -113,69 +114,59 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [language, setLanguage] = useState<'id' | 'en' | 'zh'>('id');
-  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const savedTheme = getCookie('theme');
-    const savedLang = getCookie('language') as 'id' | 'en' | 'zh' | null;
-    
-    if (savedTheme === 'dark') setIsDark(true);
-    if (savedLang) setLanguage(savedLang);
+    const isSavedDark = savedTheme === 'dark';
 
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
+    setIsDark(isSavedDark);
+    document.documentElement.classList.toggle('dark', isSavedDark);
+    document.documentElement.classList.toggle('light', !isSavedDark);
   }, []);
 
-  // Reset animation when language changes
   useEffect(() => {
     setDisplayedText('');
-  }, [language]);
+  }, []);
 
   // Typing animation effect
   useEffect(() => {
     const currentQuote = quotes[currentQuoteIndex];
-    const quoteText = currentQuote[language as keyof typeof currentQuote].text;
+    const quoteText = currentQuote.text;
 
     if (displayedText.length < quoteText.length) {
-      // Still typing
       const timer = setTimeout(() => {
         setDisplayedText(quoteText.slice(0, displayedText.length + 1));
-      }, 100); // Typing speed
+      }, 100);
 
       return () => clearTimeout(timer);
     } else if (displayedText.length > 0) {
-      // Finished typing, immediately move to next quote
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setCurrentQuoteIndex((prev) => (prev + 1) % quotes.length);
         setDisplayedText('');
-      }, 10000); // 5 second pause before next quote
+      }, 10000);
+
+      return () => clearTimeout(timer);
     }
-  }, [displayedText, currentQuoteIndex, language]);
+  }, [displayedText, currentQuoteIndex]);
 
   const toggleTheme = () => {
     const newIsDark = !isDark;
     setIsDark(newIsDark);
     setCookie('theme', newIsDark ? 'dark' : 'light');
-    
-    if (newIsDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', newIsDark);
+    document.documentElement.classList.toggle('light', !newIsDark);
   };
 
-  const selectLanguage = (lang: 'id' | 'en' | 'zh') => {
-    setLanguage(lang);
-    setCookie('language', lang);
-    setShowLanguageMenu(false);
-  };
+  const t = translations.en;
+  const isDev = process.env.NODE_ENV === 'development';
+  const githubLoginUrl = process.env.NEXT_PUBLIC_GITHUB_AUTH_URL ?? '/api/auth/github';
 
-  const t = translations[language];
+  const handleGithubLogin = () => {
+    window.location.assign(githubLoginUrl);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -217,12 +208,12 @@ export default function LoginPage() {
           <div className="text-center text-white max-w-2xl">
             <div className="text-3xl font-semibold mb-6 leading-relaxed italic min-h-48 flex items-center justify-center">
               <span>{displayedText}</span>
-              {displayedText.length < quotes[currentQuoteIndex][language as keyof typeof quotes[0]].text.length && (
+              {displayedText.length < quotes[currentQuoteIndex].text.length && (
                 <span className="typing-cursor text-white">|</span>
               )}
             </div>
             <p className="text-lg text-indigo-100 font-medium">
-              — {quotes[currentQuoteIndex][language as keyof typeof quotes[0]].author}
+              — {quotes[currentQuoteIndex].author}
             </p>
           </div>
         </div>
@@ -331,6 +322,24 @@ export default function LoginPage() {
             </button>
           </form>
 
+          {isDev && (
+            <div className="mt-4 text-center">
+              <button
+                type="button"
+                onClick={handleGithubLogin}
+                className="w-full inline-flex items-center justify-center gap-2 border border-gray-300 hover:border-gray-400 bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100 rounded-lg py-2.5 px-4 transition duration-200"
+              >
+                <span className="text-xl">
+                  <Image src="/github.png" alt="GitHub" width={20} height={20} />
+                </span>
+                <span>{t.githubLoginDev}</span>
+              </button>
+              <p className={`text-sm mt-2 ${isDark ? 'text-white' : 'text-black'}`}>
+                {t.forDev}
+              </p>
+            </div>
+          )}
+
           {/* Sign Up Link */}
           <div className="mt-6 text-center">
             <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -352,7 +361,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Theme & Language Toggle - Bottom Left */}
+        {/* Theme Toggle - Bottom Left */}
         <div className="absolute bottom-6 left-6 flex gap-3">
           <button
             type="button"
@@ -366,61 +375,6 @@ export default function LoginPage() {
           >
             {isDark ? '☀️' : '🌙'}
           </button>
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-              className={`px-3 py-2 rounded-lg font-semibold transition duration-200 text-sm ${
-                isDark
-                  ? 'bg-gray-800 text-indigo-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-indigo-600 hover:bg-gray-200'
-              }`}
-              title="Switch language"
-            >
-              {language === 'id' ? 'ID' : language === 'en' ? 'EN' : '中文'}
-            </button>
-            
-            {/* Language Dropdown Menu */}
-            {showLanguageMenu && (
-              <div className={`absolute bottom-full left-0 mb-2 rounded-lg shadow-lg z-50 ${
-                isDark ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'
-              }`}>
-                <button
-                  type="button"
-                  onClick={() => selectLanguage('id')}
-                  className={`block w-full text-left px-4 py-2 hover:bg-indigo-500 hover:text-white transition duration-200 rounded-t-lg ${
-                    language === 'id'
-                      ? isDark ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-900'
-                      : isDark ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  🇮🇩 Indonesian
-                </button>
-                <button
-                  type="button"
-                  onClick={() => selectLanguage('en')}
-                  className={`block w-full text-left px-4 py-2 hover:bg-indigo-500 hover:text-white transition duration-200 ${
-                    language === 'en'
-                      ? isDark ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-900'
-                      : isDark ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  🇬🇧 English
-                </button>
-                <button
-                  type="button"
-                  onClick={() => selectLanguage('zh')}
-                  className={`block w-full text-left px-4 py-2 hover:bg-indigo-500 hover:text-white transition duration-200 rounded-b-lg ${
-                    language === 'zh'
-                      ? isDark ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-900'
-                      : isDark ? 'text-gray-300' : 'text-gray-700'
-                  }`}
-                >
-                  🇨🇳 中文 (Mandarin)
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </div>
