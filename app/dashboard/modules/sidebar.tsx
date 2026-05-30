@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import type { ReactNode } from "react";
+
 interface SidebarProps {
   isDark: boolean;
   toggleTheme: () => void;
-  navItems: { label: string; icon: JSX.Element; active?: boolean; badge?: string; link: string }[];
-  generalItems: { label: string; icon: JSX.Element; active?: boolean; link: string; badge?: string }[];
+  navItems: { label: string; icon: ReactNode; active?: boolean; badge?: string; link: string }[];
+  generalItems: { label: string; icon: ReactNode; active?: boolean; link: string; badge?: string }[];
 }
 
 export default function Sidebar({ isDark, toggleTheme, navItems, generalItems }: SidebarProps) {
@@ -26,14 +29,14 @@ export default function Sidebar({ isDark, toggleTheme, navItems, generalItems }:
       <div className="space-y-1">
         <p className={`mt-6 text-xs uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Menu</p>
         {navItems.map((item) => (
-          <button
+          <Link
             key={item.label}
+            href={item.link}
             className={`flex w-full items-center justify-between rounded-3xl px-4 py-3 text-left transition ${
               item.active
                 ? isDark ? "bg-blue-900/30 text-blue-400 shadow-sm" : "bg-blue-50 text-blue-700 shadow-sm"
                 : isDark ? "text-slate-300 hover:bg-slate-800" : "text-slate-600 hover:bg-slate-50"
             }`}
-            onClick={() => window.location.href = item.link}
           >
             <span className="flex items-center gap-3 text-base">
               <span>{item.icon}</span>
@@ -46,21 +49,21 @@ export default function Sidebar({ isDark, toggleTheme, navItems, generalItems }:
                 {item.badge}
               </span>
             )}
-          </button>
+          </Link>
         ))}
       </div>
 
       <div className="space-y-1">
         <p className={`mt-6 text-xs uppercase tracking-[0.3em] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>General</p>
         {generalItems.map((item) => (
-          <button
+          <Link
             key={item.label}
+            href={item.link}
             className={`flex w-full items-center justify-between rounded-3xl px-4 py-3 text-left transition ${
               item.active
                 ? isDark ? "bg-blue-900/30 text-blue-400 shadow-sm" : "bg-blue-50 text-blue-700 shadow-sm"
                 : isDark ? "text-slate-300 hover:bg-slate-800" : "text-slate-600 hover:bg-slate-50"
             }`}
-            onClick={() => window.location.href = item.link}
           >
             <span className="flex items-center gap-3 text-base">
               <span>{item.icon}</span>
@@ -73,9 +76,11 @@ export default function Sidebar({ isDark, toggleTheme, navItems, generalItems }:
                 {item.badge}
               </span>
             )}
-          </button>
+          </Link>
         ))}
       </div>
+
+      <hr className={`my-4 mt-0 mb-0 ${isDark ? 'border-slate-800' : 'border-slate-200'}`} />
 
       <div className="mt-4 flex items-center gap-3">
         <button

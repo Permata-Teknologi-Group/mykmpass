@@ -67,7 +67,28 @@ export default function RegisterPage() {
 
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.detail ?? 'Registrasi gagal.');
+        const detail = err.response?.data?.detail;
+        if (typeof detail === 'string') {
+          setError(detail);
+        } else if (Array.isArray(detail)) {
+          const formatted = detail
+            .map((d) => {
+              if (typeof d === 'string') return d;
+              if (d && typeof d === 'object') {
+                const field = Array.isArray(d.loc) ? d.loc.slice(-1)[0] : d.loc;
+                if (d.msg) return field ? `${field}: ${d.msg}` : d.msg;
+                return JSON.stringify(d);
+              }
+              return JSON.stringify(d);
+            })
+            .join(' ');
+          setError(formatted);
+        } else if (detail && typeof detail === 'object') {
+          const msg = (detail as any).msg ?? (detail as any).detail ?? JSON.stringify(detail);
+          setError(msg);
+        } else {
+          setError('Registrasi gagal.');
+        }
       } else {
         setError('Terjadi kesalahan. Silakan coba lagi.');
       }
